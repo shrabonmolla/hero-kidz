@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
           <Navbar />
         </header>
 
-        <main lassName="py-2 md:w-11/12 mx-auto">{children}</main>
+        <main className="py-2 md:w-11/12 mx-auto">{children}</main>
 
         <footer>
           <Footer />
