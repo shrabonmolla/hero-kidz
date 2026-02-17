@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FaStar, FaShoppingCart } from "react-icons/fa";
 
 export default function ProductCard({ product }) {
-  const { image, title, price, discount, sold, ratings, description } = product;
+  const { image, title, price, discount, sold, ratings, description, _id } =
+    product;
 
   const discountedPrice = price - (price * discount) / 100;
 
@@ -50,7 +52,11 @@ export default function ProductCard({ product }) {
 
         {/* Buttons */}
         <div className="card-actions justify-between mt-4">
-          <button className="btn btn-outline btn-primary">View Details</button>
+          <Link href={`/products/${_id}`}>
+            <button className="btn btn-outline btn-primary">
+              View Details
+            </button>
+          </Link>
 
           <button className="btn btn-primary flex items-center gap-2">
             <FaShoppingCart />
