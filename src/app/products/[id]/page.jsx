@@ -1,3 +1,4 @@
+import CartButton from "@/components/buttons/CartButton";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -65,8 +66,7 @@ export default async function ProductDetails({ params }) {
 
           {/* Buttons */}
           <div className="flex gap-4 mt-6">
-            <button className="btn btn-primary">Add to Cart</button>
-            <button className="btn btn-outline btn-primary">Buy Now</button>
+            <CartButton product={product} />
           </div>
         </div>
       </div>
