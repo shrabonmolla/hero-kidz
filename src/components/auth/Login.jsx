@@ -4,8 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FiMail, FiLock } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const router = useRouter();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -23,6 +25,13 @@ export default function Login() {
       password: form.password,
       email: form.email,
     });
+
+    if (result.status === 200) {
+      alert("sucessfully login");
+      console.log(result);
+    } else {
+      alert("failed login");
+    }
   };
 
   const handleGoogleLogin = () => {

@@ -26,14 +26,7 @@ export async function postUser(payload) {
 export async function loginUser(payload) {
   const { email } = payload;
 
-  const collection = await dbconnect("user"); // keep same if collection name is user
-  const user = await collection.findOne({ email });
+  const user = await dbconnect("user").findOne({ email: email });
 
-  if (!user) return null;
-
-  return {
-    id: user._id.toString(), // ⭐ MOST IMPORTANT FIX
-    name: user.name,
-    email: user.email,
-  };
+  return user;
 }
