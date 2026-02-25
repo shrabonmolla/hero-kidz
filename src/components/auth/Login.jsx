@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FiMail, FiLock } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import SocialLoginBtn from "../buttons/SocialLoginBtn";
 
 export default function Login() {
   const router = useRouter();
@@ -32,10 +33,6 @@ export default function Login() {
     } else {
       alert("failed login");
     }
-  };
-
-  const handleGoogleLogin = () => {
-    console.log("Google Login Clicked");
   };
 
   return (
@@ -95,13 +92,14 @@ export default function Login() {
           <div className="divider">OR</div>
 
           {/* Google Login */}
-          <button
+          {/* <button
             onClick={handleGoogleLogin}
             className="btn btn-outline w-full flex items-center gap-2"
           >
             <FcGoogle size={20} />
             Continue with Google
-          </button>
+          </button> */}
+          <SocialLoginBtn />
 
           {/* Register Link */}
           <p className="text-center text-sm mt-4">

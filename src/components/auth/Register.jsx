@@ -6,6 +6,7 @@ import { FiUser, FiMail, FiLock } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
 import { postUser } from "@/actions/server";
 import { useRouter } from "next/navigation";
+import SocialLoginBtn from "../buttons/SocialLoginBtn";
 
 export default function Register() {
   const router = useRouter();
@@ -31,10 +32,6 @@ export default function Register() {
       alert("regestration successful");
       router.push(`/login`);
     }
-  };
-
-  const handleGoogleRegister = () => {
-    console.log("Google Register Clicked");
   };
 
   return (
@@ -113,13 +110,7 @@ export default function Register() {
           <div className="divider">OR</div>
 
           {/* Google Register */}
-          <button
-            onClick={handleGoogleRegister}
-            className="btn btn-outline w-full flex items-center gap-2"
-          >
-            <FcGoogle size={20} />
-            Sign up with Google
-          </button>
+          <SocialLoginBtn />
 
           {/* Login Link */}
           <p className="text-center text-sm mt-4">
