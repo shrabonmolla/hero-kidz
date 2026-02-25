@@ -59,7 +59,7 @@ export default function ProductCard({ product }) {
             </button>
           </Link>
 
-          <CartButton />
+          <CartButton product={product} />
         </div>
       </div>
     </div>

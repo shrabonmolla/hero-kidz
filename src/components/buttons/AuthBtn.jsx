@@ -5,13 +5,17 @@ import React from "react";
 
 export default function AuthBtn() {
   const session = useSession();
+  console.log(session);
 
   return (
     <div>
       {session.status === "authenticated" ? (
-        <button onClick={() => signOut()} className="btn btn-primary">
-          Log Out{" "}
-        </button>
+        <div className="flex  justify-end">
+          Signed in as {session.data.user.email}
+          <button onClick={() => signOut()} className="btn btn-primary">
+            Log Out{" "}
+          </button>
+        </div>
       ) : (
         <Link href={`/login`} className="btn btn-primary">
           Log In{" "}

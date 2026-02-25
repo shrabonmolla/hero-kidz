@@ -53,14 +53,18 @@ export const authOptions = {
       const result = await dbconnect("user").insertOne(newUser);
       return result;
     },
-    // async redirect({ url, baseUrl }) {
-    //   return baseUrl
-    // },
-    // async session({ session, token, user }) {
-    //   return session
-    // },
-    // async jwt({ token, user, account, profile, isNewUser }) {
-    //   return token
-    // }
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
+    },
+    async session({ session, token, user }) {
+      session.accessToken = token.accessToken;
+      return session;
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      return token;
+    },
   },
 };
