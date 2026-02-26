@@ -56,7 +56,7 @@ export default function Navbar() {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-2">
-        <Link href={"/"} className="btn btn-primary">
+        <Link href={"/cart"} className="btn btn-primary">
           <FaCartShopping />
         </Link>
         <AuthBtn />

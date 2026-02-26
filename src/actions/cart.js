@@ -46,3 +46,62 @@ export async function handleCart(productId) {
     return { sucess: result.acknowledged };
   }
 }
+
+export async function getCart() {
+  const { user } = await getServerSession(authOptions);
+
+  const query = {};
+  query.email = user?.email;
+
+  const result = dbconnect("carts").find(query).toArray();
+  return result;
+  // console.log(result);
+}
+
+export async function deleteCart(id) {
+  const { user } = await getServerSession(authOptions);
+
+  const query = {};
+  query.email = user?.email;
+  query._id = new ObjectId(id);
+
+  const result = await dbconnect("carts").deleteOne(query);
+  console.log(result);
+  return result;
+}
+
+export async function increaseCartItem(id) {
+  const { user } = await getServerSession(authOptions);
+
+  const query = {};
+  query.email = user?.email;
+  query._id = new ObjectId(id);
+
+  const updatedDoc = {
+    $inc: {
+      quantity: 1,
+    },
+  };
+
+  const result = await dbconnect("carts").updateOne(query, updatedDoc);
+
+  return result;
+}
+
+export async function decreaseCartItem(id) {
+  const { user } = await getServerSession(authOptions);
+
+  const query = {};
+  query.email = user?.email;
+  query._id = new ObjectId(id);
+
+  const updatedDoc = {
+    $inc: {
+      quantity: -1,
+    },
+  };
+
+  const result = await dbconnect("carts").updateOne(query, updatedDoc);
+  console.log(result);
+  return result;
+}
